@@ -206,8 +206,9 @@ Authorization: token值
 - **请求参数**: (Query 参数)
 
 |参数名|类型|必填|说明|
-|skip	|int	|否	|跳过条数|默认 0|
-|limit|	int	|否	|每页条数|默认 100|
+|--------|------|------|------|
+|skip	|int	|否	|跳过条数,默认 0|
+|limit|	int	|否	|每页条数,默认 100|
 
 - **请求示例**:
 plaintext
@@ -239,9 +240,11 @@ GET http://localhost:8000/api/question/subjects?skip=0&limit=10
 
 - **接口地址**: GET /api/question/chapters
 - **请求参数**: (Query 参数)
-|参数名|	类型	|必填	|说明|
+
+|参数名|类型|必填|说明|
+|--------|------|------|------|
 |subjectId	|int	|是	|科目 ID|
-|page	|int	|否	|页码|默认 1|
+|page	|int	|否	|页码,默认 1|
 |pageSize	|int	|否	|每页条数,默认 100，最大 100|
 
 - **请求示例**:
@@ -279,7 +282,9 @@ GET http://localhost:8000/api/question/chapters?subjectId=1&page=1&pageSize=10
 #### 3. 根据章节 ID 获取题目列表
 - **接口地址**: GET /api/question/list
 - **请求参数**: (Query 参数)
+
 |参数名	|类型	|必填	|说明|
+|--------|------|------|------|
 |chapterId|	int	|是	|章节 ID|
 |page	|int	|否	|页码，默认 1|
 |pageSize	|int	|否	|每页条数，默认 10，最大 100|
@@ -317,7 +322,9 @@ GET http://localhost:8000/api/question/list?chapterId=1&page=1&pageSize=5
 #### 4. 获取单个题目详情
 - **接口地址**: GET /api/question/detail
 - **请求参数**: (Query 参数)
+
 |参数名|	类型|	必填	|说明|
+|--------|------|------|------|
 |id	|int	|是	|题目 ID|
 - **请求示例**:
 plaintext
@@ -344,7 +351,9 @@ GET http://localhost:8000/api/question/detail?id=1
 - **接口地址**: POST /api/question/submit
 - **认证要求**: 需要在请求头携带 Authorization: token值
 - **请求参数**: (Query 参数)
+
 |参数名	|类型|	必填|	说明|
+|--------|------|------|------|
 |question_id|	int|	是	|题目 ID|
 |answer	|string	|是	|用户答案（A/B/C/D）|
 - **请求示例**:
@@ -371,7 +380,9 @@ Authorization: your_token_here
 - **接口地址**: GET /api/correct/list
 - **请求头**: 需要认证
 - **请求参数** (Query 参数):
+
 |参数名|	类型|	必填|	说明|
+|--------|------|------|------|
 |page	|int	|否	|页码，默认 1|
 |pageSize	|int	|否|	每页条数，默认 10，最大 100|
 - **响应示例**:
@@ -430,7 +441,9 @@ Authorization: your_token_here
 - **接口地址**: GET /api/favorite/check
 - **请求头**: 需要认证（Authorization: token值）
 - **请求参数**（Query 参数）:
+
 |参数名|	类型	|必填|	说明|
+|--------|------|------|------|
 |question_id	|int	|是	|题目 ID|
 - **请求示例**:
 plaintext
@@ -450,7 +463,9 @@ GET http://localhost:8000/api/favorite/check?question_id=1001
 - **接口地址**: POST /api/favorite/add
 - **请求头**: 需要认证（Authorization: token值）
 - **请求参数**:
+
 |参数名|	类型	|必填	|说明|
+|--------|------|------|------|
 |questionId	|int	|是	|题目 ID（注：参数别名映射，实际接收 question_id）|
 - **请求示例**:
 ```json
@@ -471,7 +486,9 @@ GET http://localhost:8000/api/favorite/check?question_id=1001
 - **接口地址**: DELETE /api/favorite/cancel/{question_id}
 - **请求头**: 需要认证（Authorization: token值）
 - **请求参数**:
+
 |参数名|	类型|	必填	|说明|
+|--------|------|------|------|
 |question_id|	int|	是	|题目 ID|
 - **请求示例**:
 plaintext
@@ -497,8 +514,10 @@ DELETE http://localhost:8000/api/favorite/cancel/1001
 - **接口地址**: GET /api/favorite/list
 - **请求头**: 需要认证（Authorization: token值）
 - **请求参数**:
+
 |参数名|	类型|	必填|	说明|
-|page	int	|否|	页码，默认 1，最小值 1|
+|--------|------|------|------|
+|page	|int	|否|	页码，默认 1，最小值 1|
 |pageSize	|int	|否	|每页条数，默认 10，最小值 1，最大值 100|
 - **请求示例**:
 plaintext
@@ -565,7 +584,9 @@ Authorization: token值
 #### 1. 获取帖子列表（分页）
 - **接口地址**: GET /api/forum/list
 - **请求参数**: 
+
 |参数名|	类型|	必填	|说明|
+|--------|------|------|------|
 |page	|int	|否	|页码，默认值 1，最小值 1|
 |pageSize|	int	|否	|每页条数，默认值 10，取值范围 1-100|
 - **请求示例**:
@@ -623,7 +644,9 @@ GET http://localhost:8000/api/forum/hot
 - **接口地址**: POST /api/forum/create
 - **请求头**: 需要认证
 - **请求参数**: 
+
 |参数名|	类型	|必填|	说明|
+|--------|------|------|------|
 |title	|string|	是|	帖子标题|
 |content|	string	|是	|帖子内容|
 - **请求示例**:
@@ -645,7 +668,9 @@ GET http://localhost:8000/api/forum/hot
 #### 4. 获取帖子详情（含评论）
 - **接口地址**: GET /api/forum/detail/{post_id}
 - **请求参数**: 
+
 |参数名	|类型	|必填|	说明|
+|--------|------|------|------|
 |post_id	|int|	是|	帖子 ID|
 - **请求示例**:
 plaintext
@@ -677,7 +702,9 @@ GET http://localhost:8000/api/forum/detail/1
 - **接口地址**: DELETE /api/forum/post/{post_id}
 - **请求头**: 需要认证
 - **请求参数**: 
+
 |参数名|	类型|	必填|	说明|
+|--------|------|------|------|
 |post_id	|int	|是|	帖子 ID|
 - **请求示例**:
 plaintext
@@ -705,7 +732,9 @@ DELETE http://localhost:8000/api/forum/post/1
 - **接口地址**: POST /api/forum/comment
 - **请求头**: 需要认证
 - **请求参数**: 
+
 |参数名|	类型	|必填|	说明|
+|--------|------|------|------|
 |postId|	int|	是|	所属帖子 ID|
 |content|	string|	是|	评论内容|
 - **请求示例**:
@@ -728,7 +757,9 @@ DELETE http://localhost:8000/api/forum/post/1
 - **接口地址**: DELETE /api/forum/comment/{comment_id}
 - **请求头**: 需要认证
 - **请求参数**:
+
 |参数名	|类型	|必填	|说明|
+|--------|------|------|------|
 |comment_id|	int	|是	|评论 ID|
 - **请求示例**:
 plaintext
@@ -756,7 +787,9 @@ DELETE http://localhost:8000/api/forum/comment/1
 - **接口地址**: GET /api/error/list
 - **请求头**: 需要认证（Authorization: token值）
 - **请求参数**:
+
 |参数名	|类型|	必填	|说明|
+|--------|------|------|------|
 |page	|int|	否|	页码，默认 1，最小值 1|
 |pageSize	|int|	否|	每页条数，默认 10，最小值 1，最大值 100|
 - **请求示例**:
@@ -793,7 +826,9 @@ GET http://localhost:8000/api/error/list?page=1&pageSize=10
 - **接口地址**: DELETE /api/error/delete/{question_id}
 - **请求头**: 需要认证（Authorization: token值）
 - **路径参数**:
+
 |参数名	|类型	|必填	|说明|
+|--------|------|------|------|
 |question_id	|int|	是	|要删除的题目 ID|
 - **请求示例**:
 plaintext
@@ -905,6 +940,7 @@ DELETE http://localhost:8000/api/error/clear
 }
 ```
 - **响应参数说明**:
+
 | 参数名 | 类型 | 说明 |
 |--------|------|------|
 | myRank | int | 当前用户的刷题排名（无数据时返回 9999） |
