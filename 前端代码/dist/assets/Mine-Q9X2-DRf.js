@@ -1,0 +1,1 @@
+import{_ as e,c,o}from"./index-B2iC3lZL.js";const s={},t={class:"page-wrap"};function a(_,n){return o(),c("div",t,"我的页面开发中")}const d=e(s,[["render",a],["__scopeId","data-v-0d37df88"]]);export{d as default};

@@ -1,0 +1,1 @@
+import{_ as e,c,o as a}from"./index-B2iC3lZL.js";const o={},s={class:"page-wrap"};function t(_,n){return a(),c("div",s,"排行榜页面开发中")}const d=e(o,[["render",t],["__scopeId","data-v-a9ec1313"]]);export{d as default};

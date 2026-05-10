@@ -1,0 +1,1 @@
+import{_ as e,c,o}from"./index-B2iC3lZL.js";const t={},s={class:"page-wrap"};function a(_,n){return o(),c("div",s,"评论页面开发中")}const d=e(t,[["render",a],["__scopeId","data-v-419b9e3b"]]);export{d as default};
