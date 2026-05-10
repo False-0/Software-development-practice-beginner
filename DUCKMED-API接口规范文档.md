@@ -199,22 +199,22 @@ Authorization: token值
 }
 ```
 
-题目浏览模块
+### 题目浏览模块
 
-1. 获取所有科目列表
-接口地址: GET /api/question/subjects
-请求参数: (Query 参数)
-表格
-参数名	类型	必填	说明
-skip	int	否	跳过条数，默认 0
-limit	int	否	每页条数，默认 100
+#### 1. 获取所有科目列表
+- **接口地址**: GET /api/question/subjects
+- **请求参数**: (Query 参数)
 
-请求示例:
+|参数名|类型|必填|说明|
+|skip	|int	|否	|跳过条数|默认 0|
+|limit|	int	|否	|每页条数|默认 100|
+
+- **请求示例**:
 plaintext
 GET http://localhost:8000/api/question/subjects?skip=0&limit=10
 
-响应示例:
-json
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "获取科目列表成功",
@@ -233,23 +233,23 @@ json
     }
   ]
 }
+```
 
-2. 根据科目 ID 获取章节列表
+#### 2. 根据科目 ID 获取章节列表
 
-接口地址: GET /api/question/chapters
-请求参数: (Query 参数)
-表格
-参数名	类型	必填	说明
-subjectId	int	是	科目 ID
-page	int	否	页码，默认 1
-pageSize	int	否	每页条数，默认 100，最大 100
+- **接口地址**: GET /api/question/chapters
+- **请求参数**: (Query 参数)
+|参数名|	类型	|必填	|说明|
+|subjectId	|int	|是	|科目 ID|
+|page	|int	|否	|页码|默认 1|
+|pageSize	|int	|否	|每页条数,默认 100，最大 100|
 
-请求示例:
+- **请求示例**:
 plaintext
 GET http://localhost:8000/api/question/chapters?subjectId=1&page=1&pageSize=10
 
-响应示例:
-json
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "获取章节列表成功",
@@ -274,23 +274,22 @@ json
     "hasMore": true
   }
 }
+```
 
-3. 根据章节 ID 获取题目列表
-接口地址: GET /api/question/list
-请求参数: (Query 参数)
+#### 3. 根据章节 ID 获取题目列表
+- **接口地址**: GET /api/question/list
+- **请求参数**: (Query 参数)
+|参数名	|类型	|必填	|说明|
+|chapterId|	int	|是	|章节 ID|
+|page	|int	|否	|页码，默认 1|
+|pageSize	|int	|否	|每页条数，默认 10，最大 100|
 
-表格
-参数名	类型	必填	说明
-chapterId	int	是	章节 ID
-page	int	否	页码，默认 1
-pageSize	int	否	每页条数，默认 10，最大 100
-
-请求示例:
+- **请求示例**:
 plaintext
 GET http://localhost:8000/api/question/list?chapterId=1&page=1&pageSize=5
 
-响应示例:
-json
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "获取题目列表成功",
@@ -313,18 +312,18 @@ json
     "hasMore": true
   }
 }
+```
 
-4. 获取单个题目详情
-接口地址: GET /api/question/detail
-请求参数: (Query 参数)
-表格
-参数名	类型	必填	说明
-id	int	是	题目 ID
-请求示例:
+#### 4. 获取单个题目详情
+- **接口地址**: GET /api/question/detail
+- **请求参数**: (Query 参数)
+|参数名|	类型|	必填	|说明|
+|id	|int	|是	|题目 ID|
+- **请求示例**:
 plaintext
 GET http://localhost:8000/api/question/detail?id=1
-响应示例:
-json
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "success",
@@ -340,21 +339,21 @@ json
     "createdAt": "2025-01-01T12:00:00"
   }
 }
-5. 用户提交答题结果
-接口地址: POST /api/question/submit
-认证要求: 需要在请求头携带 Authorization: token值
-请求参数: (Query 参数)
-表格
-参数名	类型	必填	说明
-question_id	int	是	题目 ID
-answer	string	是	用户答案（A/B/C/D）
-请求示例:
+```
+#### 5. 用户提交答题结果
+- **接口地址**: POST /api/question/submit
+- **认证要求**: 需要在请求头携带 Authorization: token值
+- **请求参数**: (Query 参数)
+|参数名	|类型|	必填|	说明|
+|question_id|	int|	是	|题目 ID|
+|answer	|string	|是	|用户答案（A/B/C/D）|
+- **请求示例**:
 plaintext
 POST http://localhost:8000/api/question/submit?question_id=1&answer=A
 Headers:
 Authorization: your_token_here
-响应示例:
-json
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "提交答案成功",
@@ -364,19 +363,19 @@ json
     "correct_answer": "A"
   }
 }
+```
 
-做对题目模块
+### 做对题目模块
 
-1. 获取做对题目列表
-接口地址: GET /api/correct/list
-请求头: 需要认证
-请求参数 (Query 参数):
-表格
-参数名	类型	必填	说明
-page	int	否	页码，默认 1
-pageSize	int	否	每页条数，默认 10，最大 100
-响应示例:
-json
+#### 1. 获取做对题目列表
+- **接口地址**: GET /api/correct/list
+- **请求头**: 需要认证
+- **请求参数** (Query 参数):
+|参数名|	类型|	必填|	说明|
+|page	|int	|否	|页码，默认 1|
+|pageSize	|int	|否|	每页条数，默认 10，最大 100|
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "获取做对题目成功",
@@ -399,43 +398,45 @@ json
     "hasMore": true
   }
 }
+```
 
-2. 删除单条做对记录
-接口地址: DELETE /api/correct/delete/{questionId}
-请求头: 需要认证
-响应示例:
-json
+#### 2. 删除单条做对记录
+- **接口地址**: DELETE /api/correct/delete/{questionId}
+- **请求头**: 需要认证
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "删除成功",
   "data": null
 }
+```
 
-3. 清空所有做对记录
-接口地址: DELETE /api/correct/clear
-请求头: 需要认证
-响应示例:
-json
+#### 3. 清空所有做对记录
+- **接口地址**: DELETE /api/correct/clear
+- **请求头**: 需要认证
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "清空成功",
   "data": null
 }
+```
 
-收藏题目模块
+### 收藏题目模块
 
-1. 检查题目收藏状态
-接口地址: GET /api/favorite/check
-请求头: 需要认证（Authorization: token值）
-请求参数（Query 参数）:
-表格
-参数名	类型	必填	说明
-question_id	int	是	题目 ID
-请求示例:
+#### 1. 检查题目收藏状态
+- **接口地址**: GET /api/favorite/check
+- **请求头**: 需要认证（Authorization: token值）
+- **请求参数**（Query 参数）:
+|参数名|	类型	|必填|	说明|
+|question_id	|int	|是	|题目 ID|
+- **请求示例**:
 plaintext
 GET http://localhost:8000/api/favorite/check?question_id=1001
-响应示例:
-json
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "检查收藏状态成功",
@@ -443,65 +444,67 @@ json
     "isFavorite": true
   }
 }
+```
 
-2. 添加题目收藏
-接口地址: POST /api/favorite/add
-请求头: 需要认证（Authorization: token值）
-请求参数（JSON 体）:
-表格
-参数名	类型	必填	说明
-questionId	int	是	题目 ID（注：参数别名映射，实际接收 question_id）
-请求示例:
-json
+#### 2. 添加题目收藏
+- **接口地址**: POST /api/favorite/add
+- **请求头**: 需要认证（Authorization: token值）
+- **请求参数**:
+|参数名|	类型	|必填	|说明|
+|questionId	|int	|是	|题目 ID（注：参数别名映射，实际接收 question_id）|
+- **请求示例**:
+```json
 {
   "questionId": 1001
 }
-响应示例:
-json
+```
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "收藏成功",
   "data": null
 }
+```
 
-3. 取消题目收藏
-接口地址: DELETE /api/favorite/cancel/{question_id}
-请求头: 需要认证（Authorization: token值）
-请求参数（路径参数）:
-表格
-参数名	类型	必填	说明
-question_id	int	是	题目 ID
-请求示例:
+#### 3. 取消题目收藏
+- **接口地址**: DELETE /api/favorite/cancel/{question_id}
+- **请求头**: 需要认证（Authorization: token值）
+- **请求参数**:
+|参数名|	类型|	必填	|说明|
+|question_id|	int|	是	|题目 ID|
+- **请求示例**:
 plaintext
 DELETE http://localhost:8000/api/favorite/cancel/1001
-响应示例（成功）:
-json
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "取消收藏成功",
   "data": null
 }
-响应示例（收藏不存在）:
-json
+```
+- **响应示例**:
+```json
 {
   "code": 404,
   "message": "收藏不存在",
   "data": null
 }
+```
 
-4. 获取收藏列表（分页）
-接口地址: GET /api/favorite/list
-请求头: 需要认证（Authorization: token值）
-请求参数（Query 参数）:
-表格
-参数名	类型	必填	说明
-page	int	否	页码，默认 1，最小值 1
-pageSize	int	否	每页条数，默认 10，最小值 1，最大值 100
-请求示例:
+#### 4. 获取收藏列表（分页）
+- **接口地址**: GET /api/favorite/list
+- **请求头**: 需要认证（Authorization: token值）
+- **请求参数**:
+|参数名|	类型|	必填|	说明|
+|page	int	|否|	页码，默认 1，最小值 1|
+|pageSize	|int	|否	|每页条数，默认 10，最小值 1，最大值 100|
+- **请求示例**:
 plaintext
 GET http://localhost:8000/api/favorite/list?page=1&pageSize=10
-响应示例:
-json
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "获取收藏列表成功",
@@ -521,53 +524,55 @@ json
     "hasMore": false
   }
 }
+```
 
-5. 清空全部收藏
-接口地址: DELETE /api/favorite/clear
-请求头: 需要认证（Authorization: token值）
-请求参数: 无
-请求示例:
+#### 5. 清空全部收藏
+- **接口地址**: DELETE /api/favorite/clear
+- **请求头**: 需要认证（Authorization: token值）
+- **请求参数**: 无
+- **请求示例**:
 plaintext
 DELETE http://localhost:8000/api/favorite/clear
-响应示例:
-json
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "清空收藏成功",
   "data": null
 }
+```
 
-基础 URL
+- **基础 URL**
 plaintext
 http://localhost:8000
-认证方式
+- **认证方式**
 部分接口（发布帖子、发布评论、删除帖子 / 评论）需要认证，认证通过在请求头中添加 Authorization 字段实现：
 plaintext
 Authorization: token值
-响应格式
+- **响应格式**
 所有接口返回 JSON 格式数据，通用响应结构如下：
-json
+```json
 {
   "code": 200,
   "message": "success",
   "data": {}
 }
+```
 
 
-论坛帖子模块
+### 论坛帖子模块
 
-1. 获取帖子列表（分页）
-接口地址: GET /api/forum/list
-请求参数: (URL 查询参数)
-表格
-参数名	类型	必填	说明
-page	int	否	页码，默认值 1，最小值 1
-pageSize	int	否	每页条数，默认值 10，取值范围 1-100
-请求示例:
+#### 1. 获取帖子列表（分页）
+- **接口地址**: GET /api/forum/list
+- **请求参数**: 
+|参数名|	类型|	必填	|说明|
+|page	|int	|否	|页码，默认值 1，最小值 1|
+|pageSize|	int	|否	|每页条数，默认值 10，取值范围 1-100|
+- **请求示例**:
 plaintext
 GET http://localhost:8000/api/forum/list?page=1&pageSize=10
-响应示例:
-json
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "获取帖子列表成功",
@@ -584,15 +589,16 @@ json
     "hasMore": true
   }
 }
+```
 
-2. 获取热门帖子 TOP10
-接口地址: GET /api/forum/hot
-请求参数: 无
-请求示例:
+#### 2. 获取热门帖子 TOP10
+- **接口地址**: GET /api/forum/hot
+- **请求参数**: 无
+- **请求示例**:
 plaintext
 GET http://localhost:8000/api/forum/hot
-响应示例:
-json
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "success",
@@ -611,40 +617,41 @@ json
     ]
   }
 }
+```
 
-3. 发布帖子
-接口地址: POST /api/forum/create
-请求头: 需要认证
-请求参数: (JSON 格式)
-表格
-参数名	类型	必填	说明
-title	string	是	帖子标题
-content	string	是	帖子内容
-请求示例:
-json
+#### 3. 发布帖子
+- **接口地址**: POST /api/forum/create
+- **请求头**: 需要认证
+- **请求参数**: 
+|参数名|	类型	|必填|	说明|
+|title	|string|	是|	帖子标题|
+|content|	string	|是	|帖子内容|
+- **请求示例**:
+```json
 {
   "title": "我的新帖子",
   "content": "这是帖子的详细内容..."
 }
-响应示例:
-json
+```
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "发布帖子成功",
   "data": null
 }
+```
 
-4. 获取帖子详情（含评论）
-接口地址: GET /api/forum/detail/{post_id}
-请求参数: (路径参数)
-表格
-参数名	类型	必填	说明
-post_id	int	是	帖子 ID
-请求示例:
+#### 4. 获取帖子详情（含评论）
+- **接口地址**: GET /api/forum/detail/{post_id}
+- **请求参数**: 
+|参数名	|类型	|必填|	说明|
+|post_id	|int|	是|	帖子 ID|
+- **请求示例**:
 plaintext
 GET http://localhost:8000/api/forum/detail/1
-响应示例:
-json
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "success",
@@ -664,96 +671,99 @@ json
     ]
   }
 }
+```
 
-5. 删除自己的帖子
-接口地址: DELETE /api/forum/post/{post_id}
-请求头: 需要认证
-请求参数: (路径参数)
-表格
-参数名	类型	必填	说明
-post_id	int	是	帖子 ID
-请求示例:
+#### 5. 删除自己的帖子
+- **接口地址**: DELETE /api/forum/post/{post_id}
+- **请求头**: 需要认证
+- **请求参数**: 
+|参数名|	类型|	必填|	说明|
+|post_id	|int	|是|	帖子 ID|
+- **请求示例**:
 plaintext
 DELETE http://localhost:8000/api/forum/post/1
-响应示例:
-json
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "删除成功",
   "data": null
 }
-异常响应示例（删除他人帖子）:
-json
+```
+- **异常响应示例（删除他人帖子）**:
+```json
 {
   "code": 403,
   "message": "只能删除自己的帖子",
   "data": null
 }
+```
 
-论坛评论模块
+### 论坛评论模块
 
-1. 发布评论
-接口地址: POST /api/forum/comment
-请求头: 需要认证
-请求参数: (JSON 格式)
-表格
-参数名	类型	必填	说明
-postId	int	是	所属帖子 ID
-content	string	是	评论内容
-请求示例:
-json
+#### 1. 发布评论
+- **接口地址**: POST /api/forum/comment
+- **请求头**: 需要认证
+- **请求参数**: 
+|参数名|	类型	|必填|	说明|
+|postId|	int|	是|	所属帖子 ID|
+|content|	string|	是|	评论内容|
+- **请求示例**:
+```json
 {
   "postId": 1,
   "content": "这是我对帖子的评论内容"
 }
-响应示例:
-json
+```
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "评论成功",
   "data": null
 }
+```
 
-2. 删除自己的评论
-接口地址: DELETE /api/forum/comment/{comment_id}
-请求头: 需要认证
-请求参数: (路径参数)
-表格
-参数名	类型	必填	说明
-comment_id	int	是	评论 ID
-请求示例:
+#### 2. 删除自己的评论
+- **接口地址**: DELETE /api/forum/comment/{comment_id}
+- **请求头**: 需要认证
+- **请求参数**:
+|参数名	|类型	|必填	|说明|
+|comment_id|	int	|是	|评论 ID|
+- **请求示例**:
 plaintext
 DELETE http://localhost:8000/api/forum/comment/1
-响应示例:
-json
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "删除成功",
   "data": null
 }
-异常响应示例（删除他人评论）:
-json
+```
+- **异常响应示例（删除他人评论）**:
+```json
 {
   "code": 403,
   "message": "只能删除自己的评论",
   "data": null
 }
+```
 
-错题管理模块
+### 错题管理模块
 
-1. 获取错题列表
-接口地址: GET /api/error/list
-请求头: 需要认证（Authorization: token值）
-请求参数（Query 参数）:
-表格
-参数名	类型	必填	说明
-page	int	否	页码，默认 1，最小值 1
-pageSize	int	否	每页条数，默认 10，最小值 1，最大值 100
-请求示例:
+#### 1. 获取错题列表
+- **接口地址**: GET /api/error/list
+- **请求头**: 需要认证（Authorization: token值）
+- **请求参数**:
+|参数名	|类型|	必填	|说明|
+|page	|int|	否|	页码，默认 1，最小值 1|
+|pageSize	|int|	否|	每页条数，默认 10，最小值 1，最大值 100|
+- **请求示例**:
 plaintext
 GET http://localhost:8000/api/error/list?page=1&pageSize=10
-响应示例:
-json
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "获取错题列表成功",
@@ -777,51 +787,54 @@ json
     "hasMore": true  // 是否有下一页
   }
 }
+```
 
-2. 删除单条错题
-接口地址: DELETE /api/error/delete/{question_id}
-请求头: 需要认证（Authorization: token值）
-路径参数:
-表格
-参数名	类型	必填	说明
-question_id	int	是	要删除的题目 ID
-请求示例:
+#### 2. 删除单条错题
+- **接口地址**: DELETE /api/error/delete/{question_id}
+- **请求头**: 需要认证（Authorization: token值）
+- **路径参数**:
+|参数名	|类型	|必填	|说明|
+|question_id	|int|	是	|要删除的题目 ID|
+- **请求示例**:
 plaintext
 DELETE http://localhost:8000/api/error/delete/1
-成功响应:
-json
+- **成功响应**:
+```json
 {
   "code": 200,
   "message": "删除错题成功",
   "data": null
 }
-异常响应（错题不存在）:
-json
+```
+- **异常响应（错题不存在）**:
+```json
 {
   "code": 404,
   "message": "错题不存在",
   "data": null
 }
+```
 
-3. 清空所有错题
-接口地址: DELETE /api/error/clear
-请求头: 需要认证（Authorization: token值）
-请求示例:
+#### 3. 清空所有错题
+- **接口地址**: DELETE /api/error/clear
+- **请求头**: 需要认证（Authorization: token值）
+- **请求示例**:
 plaintext
 DELETE http://localhost:8000/api/error/clear
-响应示例:
-json
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "清空错题本成功",
   "data": null
 }
+```
 
-4. 获取错题统计信息
-接口地址: GET /api/error/statistics
-请求头: 需要认证（Authorization: token值）
-响应示例:
-json
+#### 4. 获取错题统计信息
+- **接口地址**: GET /api/error/statistics
+- **请求头**: 需要认证（Authorization: token值）
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "查询成功",
@@ -832,12 +845,13 @@ json
     "topChapterNum": 3  // 今日该章节错题数
   }
 }
+```
 
-5. 获取章节错题分布（折线图专用）
-接口地址: GET /api/error/chapter-distribution
-请求头: 需要认证（Authorization: token值）
-响应示例:
-json
+#### 5. 获取章节错题分布（折线图专用）
+- **接口地址**: GET /api/error/chapter-distribution
+- **请求头**: 需要认证（Authorization: token值）
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "获取章节错题分布成功",
@@ -854,16 +868,17 @@ json
     ]
   }
 }
+```
 
-刷题排行榜模块
+### 刷题排行榜模块
 
-1. 获取排行榜信息
-接口地址: GET /api/rank/info
-请求头: 需要认证（Authorization: token值）
-接口描述: 获取当前用户的刷题排名、个人刷题统计信息，以及全站刷题量前三的用户信息
-请求参数: 无
-响应示例:
-json
+#### 1. 获取排行榜信息
+- **接口地址**: GET /api/rank/info
+- **请求头**: 需要认证（Authorization: token值）
+- **接口描述**: 获取当前用户的刷题排名、个人刷题统计信息，以及全站刷题量前三的用户信息
+- **请求参数**: 无
+- **响应示例**:
+```json
 {
   "code": 200,
   "message": "success",
@@ -888,7 +903,8 @@ json
     ]
   }
 }
-响应参数说明:
+```
+- **响应参数说明**:
 | 参数名 | 类型 | 说明 |
 |--------|------|------|
 | myRank | int | 当前用户的刷题排名（无数据时返回 9999） |
